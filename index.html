@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<title>百景ナビ</title>
+<meta name="theme-color" content="#1F5E43">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="百景ナビ">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app" id="app">
+  <div id="map" aria-label="地図"></div>
+
+  <div class="top" id="top"></div>
+
+  <div class="fabs" id="fabs">
+    <button class="fab" id="fLayer" aria-label="地図の種類"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg></button>
+    <button class="fab loc" id="fLoc" aria-label="現在地"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button>
+  </div>
+  <div class="layers" id="layers" hidden></div>
+
+  <section class="sheet" id="sheet" aria-label="詳細">
+    <button class="grab" id="grab" aria-label="パネルを広げる"><span></span></button>
+    <div class="sheet-body" id="sheetBody"></div>
+  </section>
+
+  <section class="nav" id="nav" hidden>
+    <div class="nav-top">
+      <div class="nav-banner">
+        <div class="nav-ic" id="nIcon"></div>
+        <div class="nav-main"><div class="nav-dist" id="nDist">—</div><div class="nav-text" id="nText">—</div></div>
+      </div>
+      <div class="nav-note" id="nNote" hidden></div>
+      <div class="nav-warn" id="nOff" hidden></div>
+      <div class="nav-turn" id="nTurn" hidden></div>
+    </div>
+    <div class="nav-bottom">
+      <button class="nav-end" id="nEnd" aria-label="ナビを終了"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="nav-eta"><b id="nEta">—</b><span id="nSub">—</span></div>
+      <div class="sunchip" id="nSun">—</div>
+    </div>
+    <div class="nav-sim" id="nSim">
+      <label class="sim-toggle"><input type="checkbox" id="simOn"> 家で試す（現在地のかわりに、ルート上を動かす）</label>
+      <input type="range" id="simProg" min="0" max="1000" value="200" aria-label="ルート上の位置" hidden>
+    </div>
+  </section>
+
+  <section class="saved" id="saved" hidden></section>
+
+  <nav class="tabbar" id="tabbar">
+    <button data-tab="explore" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>探索</button>
+    <button data-tab="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12v18l-6-4-6 4z"/></svg>保存済み</button>
+  </nav>
+  <div class="toast" id="toast" role="status" hidden></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
