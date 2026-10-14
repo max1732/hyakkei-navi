@@ -1,5 +1,5 @@
 // 画面の部品は先に保存、地図タイルは保存済みならそれを使う（圏外でも表示）
-const SHELL = 'shell-v1';
+const SHELL = 'shell-v2';
 const FILES = ['./', 'index.html', 'style.css', 'app.js', 'data/tekari.json', 'manifest.webmanifest', 'icon-192.png',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css', 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(SHELL).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
